@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<file-format encoding="UTF-8">
+
+	<converter name="char" class="com.blackbear.flatworm.converters.CoreConverters" 
+		method="convertChar" return-type="java.lang.String" />
+
+	<converter name="integer" class="com.blackbear.flatworm.converters.CoreConverters" 
+		method="convertInteger" return-type="java.lang.Integer" />
+
+	<record name="out">
+		<record-definition>
+			<bean name="out" class="org.wilmar.analise.file.ArquivoOUT" />
+			<line delimit="ç">
+				<record-element length="30" beanref="out.qtdCliente" type="integer" />
+				<record-element length="30" beanref="out.qtdVendedor" type="integer" />
+				<record-element length="30" beanref="out.maiorVenda.id" type="char" />
+				<record-element length="60" beanref="out.piorVendedor.nome" type="char" />
+			</line>
+		</record-definition>
+	</record>
+</file-format>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<file-format encoding="UTF-8">
+
+	<converter name="char"
+		class="com.blackbear.flatworm.converters.CoreConverters" method="convertChar" return-type="java.lang.String" />
+
+	<converter name="big"
+		class="com.blackbear.flatworm.converters.CoreConverters" method="convertBigDecimal" return-type="java.math.BigDecimal" />
+
+	<record name="vendedor">
+		<record-ident>
+			<field-ident field-start="0" field-length="3">
+				<match-string>001</match-string>
+			</field-ident>
+		</record-ident>
+
+		<record-definition>
+			<bean name="vendedor" class="org.wilmar.analise.member.Vendedor" />
+
+			<line delimit="ç">
+				<record-element length="0" />
+
+				<record-element length="0" beanref="vendedor.cpf" type="char">
+					<conversion-option name="justify" value="right" />
+				</record-element>
+
+				<record-element length="0" beanref="vendedor.nome" type="char">
+					<conversion-option name="justify" value="left" />
+				</record-element>
+
+				<record-element length="0" beanref="vendedor.salario" type="big">
+					<conversion-option name="decimal-places" value="2" />
+					<conversion-option name="pad-character" value="0" />
+					<conversion-option name="justify" value="right" />
+				</record-element>
+			</line>
+		</record-definition>
+	</record>
+
+	<record name="cliente">
+		<record-ident>
+			<field-ident field-start="0" field-length="3">
+				<match-string>002</match-string>
+			</field-ident>
+		</record-ident>
+
+		<record-definition>
+			<bean name="cliente" class="org.wilmar.analise.member.Cliente" />
+
+			<line delimit="ç">
+				<record-element length="0" />
+
+				<record-element length="0" beanref="cliente.cnpj" type="char">
+					<conversion-option name="justify" value="right" />
+				</record-element>
+
+				<record-element length="0" beanref="cliente.nome" type="char">
+					<conversion-option name="justify" value="left" />
+				</record-element>
+
+				<record-element length="0" beanref="cliente.negocio" type="char">
+					<conversion-option name="justify" value="left" />
+				</record-element>
+			</line>
+		</record-definition>
+	</record>
+
+	<record name="venda">
+		<record-ident>
+			<field-ident field-start="0" field-length="3">
+				<match-string>003</match-string>
+			</field-ident>
+		</record-ident>
+
+		<record-definition>
+			<bean name="venda" class="org.wilmar.analise.member.Venda" />
+
+			<line delimit="ç">
+				<record-element length="0" />
+
+				<record-element length="0" beanref="venda.id" type="char">
+					<conversion-option name="justify" value="right" />
+				</record-element>
+
+				<record-element length="0" beanref="venda.detalhe" type="char">
+					<conversion-option name="justify" value="left" />
+				</record-element>
+
+				<record-element length="0" beanref="venda.vendedor" type="char">
+					<conversion-option name="justify" value="left" />
+				</record-element>
+			</line>
+		</record-definition>
+	</record>
+</file-format>
